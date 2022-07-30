@@ -1,6 +1,6 @@
-# Webpack
+# Webpack   5
 
-## 01
+## 基础+CSS
 
 ### 打包方式
 
@@ -40,11 +40,13 @@ npm run build--->执行webpack打包
 webpack --config ./webpack.js
 ```
 
-#### 未使用文件处理
+#### 打包
 
 根据配置找到入口，生成文件依赖关系图，包含应用程序所有依赖模块，
 
 遍历图结构，打包一个个模块，loader解析
+
+未使用文件，没进依赖图不会打包
 
 #### bug
 
@@ -121,8 +123,68 @@ post-css,		babel,	autoprefixer等工具都是通过这个工具查询配置
     not dead
 ```
 
+#### PostCSS
 
+通过js转换样式的工具
 
+##### css转换和适配，添加前缀
 
+```javascript
+//postcss需要依赖其他插件发挥其功能
+//npm i postcss，
+postcss-loader,目的在webpack中使用postcss
+//添加前缀,自动补全前缀
+//npm i autoprefixer
+//--use，使用postcss插件
+npx postcss --use autoprefixer -o -result.css ./src/css/index.css
+```
 
-#### 
+##### webpack使用postcss
+
+```javascript
+ 				{
+                        //postcss-loader，需要其他工具使用
+                        loader: "postcss-loader", options: {
+                            postcssOptions: {
+                                //需要依赖其他插件
+                                plugins: [
+                                    require("autoprefixer"),
+                                    //例如8位颜色，转6为颜色
+                                    require("postcss-preset-env")
+                                ]
+                            }
+                        }
+                    }
+```
+
+##### postcss抽离
+
+场景，css或者less，都需要，都写会冗余，抽离
+
+```javascript
+//根目录新建
+//postcss.config.js
+module.exports = {
+    plugins: [
+        require("postcss-preset-env")
+    ]
+}
+```
+
+##### CSS-回溯处理
+
+例如：css文件引入less文件  		@import"./a.less" 	import "./b.css"
+
+```javascript
+ 					  //style-loader  
+				{
+                        loader: "css-loader", options: {
+                            //处理当前css文件，在引入的css文件不会执行以前（postcss-loader）
+                            //使用上一层loader
+                            importLoaders: 1
+                        }
+                    },
+                        //postcss-loader
+```
+
+## webpack加载其他资源

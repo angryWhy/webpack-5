@@ -15,7 +15,25 @@ module.exports = {
                 test: /\.css$/,
                 use: [
                     { loader: "style-loader" },
-                    { loader: "css-loader" }
+                    {
+                        loader: "css-loader", options: {
+                            //处理当前css文件，在引入的css文件不会执行以前（postcss-loader）
+                            //使用上一层loader
+                            importLoaders: 1
+                        }
+                    },
+                    {
+                        //postcss-loader，需要其他工具使用
+                        loader: "postcss-loader", options: {
+                            postcssOptions: {
+                                plugins: [
+                                    // require("autoprefixer"),
+                                    //已经包含了autoprefixer，不用引入了
+                                    require("postcss-preset-env")
+                                ]
+                            }
+                        }
+                    }
                 ]
             },
             {
