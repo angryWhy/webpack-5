@@ -1,4 +1,5 @@
 import "../css/index.css"
+import "../css/cpn.less"
 function component() {
     const element = document.createElement("div")
     element.innerHTML = "hello webpack"
