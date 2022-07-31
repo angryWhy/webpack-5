@@ -6,7 +6,8 @@ module.exports = {
     output: {
         filename: "bundle.js",
         //打包后，必须要绝对路径，取到当前目录的绝对路径，在进行拼接
-        path: path.resolve(__dirname, "./build")
+        path: path.resolve(__dirname, "./build"),
+        // assetModuleFilename: "img/[name].[hash:6][ext]"
     },
     module: {
         rules: [
@@ -43,6 +44,53 @@ module.exports = {
                     { loader: "css-loader" },
                     { loader: "less-loader" }
                 ]
+            },
+            //图片方面
+            // {
+            //     test: /\.(jpg|png|jpeg|svg|gif)$/,
+            //     use: [
+            //         {
+            //             loader: "file-loader",
+            //             options: {
+            //                 //针对名字进行处理
+            //                 name: "img/[name].[hash:6].[ext]",
+            //                 //输出到指定目录
+            //                 // outputPath: "img"
+            //             }
+            //         }
+            //     ]
+            // },
+            {
+                test: /\.(jpg|png|jpeg|svg|gif)$/,
+                type: "asset/resource",
+                generator: {
+                    filename: "img/[name].[hash:6][ext]"
+                }
+            },
+            {
+                test: /\.(jpg|png|jpeg|svg|gif)$/,
+                type: "asset/inline",
+            },
+            {
+                test: /\.(jpg|png|jpeg|svg|gif)$/,
+                type: "asset",
+                generator: {
+                    filename: "img/[name].[hash:6][ext]",
+
+                },
+                parser: {
+                    dataUrlCondition: {
+                        maxSize: 100 * 1024
+                    }
+                }
+            },
+            //字体方面
+            {
+                test: /\.(woff|woff2|ttf|eot)$/,
+                type: "asset/resource",
+                generator: {
+                    filename: "font/[name].[hash:6][ext]",
+                },
             }
         ]
     }

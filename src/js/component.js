@@ -6,7 +6,7 @@ function component() {
     element.innerHTML = "hello webpack"
     element.className = "content"
     const img = new Image()
-    img.src = require("../img/a.jpg")
+    img.src = require("../img/a.jpg").default
     element.appendChild(img)
     return element
 }

@@ -1,4 +1,5 @@
 @import "./a.less";
+@import "../font/iconfont.css";
 
 .content {
     color: blue;
