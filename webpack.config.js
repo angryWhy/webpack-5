@@ -1,4 +1,7 @@
 const path = require('path')
+const { CleanWebpackPlugin } = require("clean-webpack-plugin")
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+const CopyWebpackPlugin = require("copy-webpack-plugin")
 module.exports = {
     mode: 'development',
     //入口可以使用相对路径
@@ -67,23 +70,23 @@ module.exports = {
                     filename: "img/[name].[hash:6][ext]"
                 }
             },
-            {
-                test: /\.(jpg|png|jpeg|svg|gif)$/,
-                type: "asset/inline",
-            },
-            {
-                test: /\.(jpg|png|jpeg|svg|gif)$/,
-                type: "asset",
-                generator: {
-                    filename: "img/[name].[hash:6][ext]",
+            // {
+            //     test: /\.(jpg|png|jpeg|svg|gif)$/,
+            //     type: "asset/inline",
+            // },
+            // {
+            //     test: /\.(jpg|png|jpeg|svg|gif)$/,
+            //     type: "asset",
+            //     generator: {
+            //         filename: "img/[name].[hash:6][ext]",
 
-                },
-                parser: {
-                    dataUrlCondition: {
-                        maxSize: 100 * 1024
-                    }
-                }
-            },
+            //     },
+            //     parser: {
+            //         dataUrlCondition: {
+            //             maxSize: 100 * 1024
+            //         }
+            //     }
+            // },
             //字体方面
             {
                 test: /\.(woff|woff2|ttf|eot)$/,
@@ -93,5 +96,26 @@ module.exports = {
                 },
             }
         ]
-    }
+    },
+    plugins: [
+        new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            title: "webpack-5",
+            template: "./public/index.html"
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: "public",
+                    // to: "build",
+                    globOptions: {
+                        ignore: [
+                            "**/index.html",
+                            "**/a.txt"
+                        ]
+                    }
+                }
+            ]
+        })
+    ]
 }; 
