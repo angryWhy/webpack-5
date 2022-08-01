@@ -4,8 +4,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin")
 const CopyWebpackPlugin = require("copy-webpack-plugin")
 module.exports = {
     mode: 'development',
-    //入口可以使用相对路径
-    entry: "./src/js/main.js",
+    //入口可以使用相对路径,
+    devtool: "source-map",
+    entry: "./src/common_index.js",
     output: {
         filename: "bundle.js",
         //打包后，必须要绝对路径，取到当前目录的绝对路径，在进行拼接
