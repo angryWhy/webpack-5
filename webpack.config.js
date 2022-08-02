@@ -6,7 +6,7 @@ module.exports = {
     mode: 'development',
     //入口可以使用相对路径,
     devtool: "source-map",
-    entry: "./src/common_index.js",
+    entry: "./src/ES Module_index",
     output: {
         filename: "bundle.js",
         //打包后，必须要绝对路径，取到当前目录的绝对路径，在进行拼接
