@@ -1,86 +1,119 @@
-//定义一个对象，里面是模块映射，key-value
+/*
+ * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+/******/ (function() { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/js/format.js":
+/*!**************************!*\
+  !*** ./src/js/format.js ***!
+  \**************************/
+/***/ (function(module) {
+
+eval("const dateFormat = date => {\n  return \"2020-12-12\";\n};\n\nconst priceFormat = price => {\n  return \"100.00\";\n};\n\nmodule.exports = {\n  dateFormat,\n  priceFormat\n};\n\n//# sourceURL=webpack:///./src/js/format.js?");
+
+/***/ }),
+
+/***/ "./src/js/math.js":
+/*!************************!*\
+  !*** ./src/js/math.js ***!
+  \************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
 "use strict";
-var __webpack_modules__ = ({
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"mul\": function() { return /* binding */ mul; },\n/* harmony export */   \"sum\": function() { return /* binding */ sum; }\n/* harmony export */ });\nconst sum = (sum1, sum2) => {\n  return sum1 + sum2;\n};\nconst mul = (num1, num2) => {\n  return num1 * num2;\n};\n\n//# sourceURL=webpack:///./src/js/math.js?");
 
-  "./src/js/math.js":
+/***/ }),
 
-    (function (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-      //r函数打上标记
-      __webpack_require__.r(__webpack_exports__);
-      //第二个参数为defination
-      //exports本身没有对应的，都是从definition里取得，相当于劫持，代理
-      __webpack_require__.d(__webpack_exports__, {
-        "mul": function () { return mul; },
-        "sum": function () { return sum; }
-      });
-      const sum = (sum1, sum2) => {
-        return sum1 + sum2
-      }
-      const mul = (num1, num2) => {
-        return num1 * num2
-      }
+/***/ "./src/mix.js":
+/*!********************!*\
+  !*** ./src/mix.js ***!
+  \********************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-    })
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _js_format__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/format */ \"./src/js/format.js\");\n/* harmony import */ var _js_format__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_js_format__WEBPACK_IMPORTED_MODULE_0__);\n//ES Module导出，commonJS引入内容\nconst math = __webpack_require__(/*! ./js/math */ \"./src/js/math.js\"); //commonJS导出内容，ESmodule引入内容\n\n\n\nconsole.log(sum(20.30));\nconsole.log(mul(20.30));\nconsole.log(dateFormat(\"aaa\"));\nconsole.log(priceFormat(\"bbb\"));\n\n//# sourceURL=webpack:///./src/mix.js?");
 
-});
+/***/ })
 
-//缓存函数
-var __webpack_module_cache__ = {};
-function __webpack_require__(moduleId) {
-  //如果有则直接导出
-  var cachedModule = __webpack_module_cache__[moduleId];
-  if (cachedModule !== undefined) {
-    return cachedModule.exports;
-  }
-  //没有就传递赋值
-  var module = __webpack_module_cache__[moduleId] = {
-    exports: {}
-  };
-
-  __webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-  return module.exports;
-}
-//立即执行函数
-!function () {
-  //对__webpack_require__增加对象，对象key为d，值为function
-  __webpack_require__.d = function (exports, definition) {
-    //遍历
-    for (var key in definition) {
-      if (__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-        //将key定义到exports，重写get方法
-        //export["sum"]-->definition["sum"]
-        Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-      }
-    }
-  };
-}();
-
-//对__webpack_require__增加对象，对象key为o，值为function
-//函数作用判断prop是否是obj的对象
-!function () {
-  __webpack_require__.o = function (obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
-}();
-
-
-!function () {
-  //对__webpack_require__增加对象，对象key为r，值为function
-  //exports增加属性，记录一下这个模块为ESModule，做了一个标记
-  __webpack_require__.r = function (exports) {
-    if (typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-      Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-    }
-    //添加esModule，值为true
-    Object.defineProperty(exports, '__esModule', { value: true });
-  };
-}();
-
-var __webpack_exports__ = {};
-
-!function () {
-  //调用r记录是ESmodule
-  __webpack_require__.r(__webpack_exports__);
-  var _js_math__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/js/math.js");
-
-  console.log((0, _js_math__WEBPACK_IMPORTED_MODULE_0__.sum)(20.30));
-  console.log((0, _js_math__WEBPACK_IMPORTED_MODULE_0__.mul)(20.30));
-}();
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	!function() {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = function(module) {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				function() { return module['default']; } :
+/******/ 				function() { return module; };
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	!function() {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = function(exports, definition) {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	!function() {
+/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
+/******/ 	}();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	!function() {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = function(exports) {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	}();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module can't be inlined because the eval devtool is used.
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/mix.js");
+/******/ 	
+/******/ })()
+;
