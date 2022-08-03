@@ -1,85 +1,9 @@
-/*
- * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
- * This devtool is neither made for production nor for readable output files.
- * It uses "eval()" calls to create a separate source file in the browser devtools.
- * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
- * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
- */
 /******/ (function() { // webpackBootstrap
-/******/ 	var __webpack_modules__ = ({
-
-/***/ "./src/js/format.js":
-/*!**************************!*\
-  !*** ./src/js/format.js ***!
-  \**************************/
-/***/ (function(module) {
-
-eval("const dateFormat = date => {\n  return \"2020-12-12\";\n};\n\nconst priceFormat = price => {\n  return \"100.00\";\n};\n\nmodule.exports = {\n  dateFormat,\n  priceFormat\n};\n\n//# sourceURL=webpack:///./src/js/format.js?");
-
-/***/ }),
-
-/***/ "./src/js/math.js":
-/*!************************!*\
-  !*** ./src/js/math.js ***!
-  \************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"mul\": function() { return /* binding */ mul; },\n/* harmony export */   \"sum\": function() { return /* binding */ sum; }\n/* harmony export */ });\nconst sum = (sum1, sum2) => {\n  return sum1 + sum2;\n};\nconst mul = (num1, num2) => {\n  return num1 * num2;\n};\n\n//# sourceURL=webpack:///./src/js/math.js?");
-
-/***/ }),
-
-/***/ "./src/mix.js":
-/*!********************!*\
-  !*** ./src/mix.js ***!
-  \********************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _js_format__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./js/format */ \"./src/js/format.js\");\n/* harmony import */ var _js_format__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_js_format__WEBPACK_IMPORTED_MODULE_0__);\n//ES Module导出，commonJS引入内容\nconst math = __webpack_require__(/*! ./js/math */ \"./src/js/math.js\"); //commonJS导出内容，ESmodule引入内容\n\n\n\nconsole.log(sum(20.30));\nconsole.log(mul(20.30));\nconsole.log(dateFormat(\"aaa\"));\nconsole.log(priceFormat(\"bbb\"));\n\n//# sourceURL=webpack:///./src/mix.js?");
-
-/***/ })
-
-/******/ 	});
-/************************************************************************/
-/******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
-/******/ 	
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
-/******/ 		if (cachedModule !== undefined) {
-/******/ 			return cachedModule.exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
-/******/ 			exports: {}
-/******/ 		};
-/******/ 	
-/******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
+/******/ 	"use strict";
+/******/ 	// The require scope
+/******/ 	var __webpack_require__ = {};
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	!function() {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = function(module) {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				function() { return module['default']; } :
-/******/ 				function() { return module; };
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	}();
-/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	!function() {
 /******/ 		// define getter functions for harmony exports
@@ -109,11 +33,22 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _js_
 /******/ 	}();
 /******/ 	
 /************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/mix.js");
-/******/ 	
+var __webpack_exports__ = {};
+/*!************************!*\
+  !*** ./src/js/math.js ***!
+  \************************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "mul": function() { return /* binding */ mul; },
+/* harmony export */   "sum": function() { return /* binding */ sum; }
+/* harmony export */ });
+const sum = (sum1, sum2) => {
+  return sum1 + sum2;
+};
+const mul = (num1, num2) => {
+  return num1 * num2;
+};
+const promise = new Promise((resolve, reject) => {});
 /******/ })()
 ;
+//# sourceMappingURL=bundle.js.map

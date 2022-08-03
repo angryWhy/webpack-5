@@ -5,8 +5,8 @@ const CopyWebpackPlugin = require("copy-webpack-plugin")
 module.exports = {
     mode: 'development',
     //入口可以使用相对路径,
-    devtool: "eval",
-    entry: "./src/mix.js",
+    devtool: "source-map",
+    entry: "./src/js/math.js",
     output: {
         filename: "bundle.js",
         //打包后，必须要绝对路径，取到当前目录的绝对路径，在进行拼接
@@ -98,12 +98,14 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                exclude: /(node_modules|bower_components)/,
                 use: {
                     loader: 'babel-loader',
                     options: {
+                        // plugins: [
+                        //     "@babel/plugin-transform-arrow-functions"
+                        // ],
                         presets: [
-                            ['@babel/preset-env', { targets: "defaults" }]
+                            '@babel/preset-env'
                         ]
                     }
                 }
