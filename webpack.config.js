@@ -98,6 +98,7 @@ module.exports = {
             },
             {
                 test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,
                 use: {
                     loader: 'babel-loader',
                     options: {
@@ -105,7 +106,20 @@ module.exports = {
                         //     "@babel/plugin-transform-arrow-functions"
                         // ],
                         presets: [
-                            '@babel/preset-env'
+                            [
+                                '@babel/preset-env',
+                                {
+                                    useBuiltIns: 'usage',
+                                    corejs: { version: 3 },
+                                    targets: {
+                                        chrome: '60',
+                                        firefox: '60',
+                                        ie: '9',
+                                        safari: '10',
+                                        edge: '17',
+                                    },
+                                },
+                            ]
                         ]
                     }
                 }
