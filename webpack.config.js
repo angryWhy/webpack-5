@@ -2,10 +2,14 @@ const path = require('path')
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const CopyWebpackPlugin = require("copy-webpack-plugin")
+const reactRefresh = require("@pmmmwh/react-refresh-webpack-plugin")
 module.exports = {
     mode: 'development',
     //入口可以使用相对路径,
     devtool: "source-map",
+    devServer: {
+        hot: true
+    },
     entry: "./src/react/index.jsx",
     output: {
         filename: "bundle.js",
@@ -140,6 +144,24 @@ module.exports = {
                                 [
                                     "@babel/preset-react"
                                 ]
+                            ],
+                            plugins: [
+                                ["react-refresh/babel"]
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.ts$/,
+                use: [
+                    {
+                        loader: "babel-loader",
+                        options: {
+                            presets: [
+                                [
+                                    "@babel/preset-typescript"
+                                ]
                             ]
                         }
                     }
@@ -166,6 +188,7 @@ module.exports = {
                     }
                 }
             ]
-        })
+        }),
+        new reactRefresh()
     ]
 }; 
