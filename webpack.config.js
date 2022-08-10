@@ -8,7 +8,34 @@ module.exports = {
     //入口可以使用相对路径,
     devtool: "source-map",
     devServer: {
-        hot: true
+        //热模块
+        hot: true,
+        //修改错误，自动刷新，修正错误
+        hotOnly: true,
+        //devServer真正的输出文件
+        publicPath: "/abc",
+        //指定其他资源引入
+        watchContentBase: true,
+        //设置端口号
+        port: 7777,
+        //编译成功自动打开浏览器
+        open: true,
+        //压缩，浏览器自动解压,gzip
+        compress: true,
+        contentBase: path.resolve(__dirname, "./abc"),
+        proxy: {
+            "wzx": {
+                target: "http://localhost:9000",
+                pathRewrite: {
+                    //使用时替换掉，相当于直接是target路径
+                    "^/wzx": "",
+                    //如果不想验证安全证书
+                    secure: false,
+
+                    changeOrigin: true
+                }
+            }
+        },
     },
     entry: "./src/react/index.jsx",
     output: {
@@ -16,7 +43,9 @@ module.exports = {
         //打包后，必须要绝对路径，取到当前目录的绝对路径，在进行拼接
         path: path.resolve(__dirname, "./build"),
         // assetModuleFilename: "img/[name].[hash:6][ext]"
+        publicPath: "./"
     },
+
     module: {
         rules: [
             {
