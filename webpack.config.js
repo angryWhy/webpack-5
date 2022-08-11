@@ -11,18 +11,18 @@ module.exports = {
         //热模块
         hot: true,
         //修改错误，自动刷新，修正错误
-        hotOnly: true,
+        // hotOnly: true,
         //devServer真正的输出文件
-        publicPath: "/abc",
+        // publicPath: "/abc",
         //指定其他资源引入
-        watchContentBase: true,
+        // watchContentBase: true,
         //设置端口号
-        port: 7777,
+        // port: 7777,
         //编译成功自动打开浏览器
         open: true,
         //压缩，浏览器自动解压,gzip
-        compress: true,
-        contentBase: path.resolve(__dirname, "./abc"),
+        // compress: true,
+        // contentBase: path.resolve(__dirname, "./abc"),
         proxy: {
             "wzx": {
                 target: "http://localhost:9000",
@@ -31,19 +31,23 @@ module.exports = {
                     "^/wzx": "",
                     //如果不想验证安全证书
                     secure: false,
-
                     changeOrigin: true
                 }
             }
         },
     },
     entry: "./src/react/index.jsx",
+    entry: {
+        main: { import: "./src/react/main.jsx", dependOn: "loadsh" },
+        index: { import: "./src/react/index.jsx", dependOn: "loadsh" },
+        loadsh: "loadsh"
+    },
     output: {
         filename: "bundle.js",
         //打包后，必须要绝对路径，取到当前目录的绝对路径，在进行拼接
         path: path.resolve(__dirname, "./build"),
         // assetModuleFilename: "img/[name].[hash:6][ext]"
-        publicPath: "./"
+        // publicPath: "./"
     },
 
     module: {
