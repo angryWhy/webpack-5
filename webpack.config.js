@@ -49,7 +49,26 @@ module.exports = {
         // assetModuleFilename: "img/[name].[hash:6][ext]"
         // publicPath: "./"
     },
-
+    optimization: {
+        splitChunks: {
+            //只有异步才会分离
+            //inital导入同步
+            //all所有都打入
+            chunks: "async",
+            //如果拆分的包大小最小为默认2万
+            minSize: 20000,
+            //maxSize，拆成不小于minSize
+            maxSize: 0,
+            //minChunks，导入次数不小于
+            //缓存哪些组件
+            cacheGroup: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    filename: "[id]_vendors.js"
+                }
+            }
+        }
+    },
     module: {
         rules: [
             {
