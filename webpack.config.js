@@ -3,6 +3,12 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const CopyWebpackPlugin = require("copy-webpack-plugin")
 const reactRefresh = require("@pmmmwh/react-refresh-webpack-plugin")
+const TerserPlugin = require("terser-webpack-plugin")
+const CssMinizer = require("css-minimizer-webpack-plugin")
+const PurgeCssPlugin = require("purgecss-webpack-plugin")
+//找到当前根目录，进行拼接
+const resolveApp = require("./paths")
+const glob = require("glob")
 module.exports = {
     mode: 'development',
     //入口可以使用相对路径,
@@ -66,8 +72,16 @@ module.exports = {
                     test: /[\\/]node_modules[\\/]/,
                     filename: "[id]_vendors.js"
                 }
+            },
+            default: {
+                //若果引入两次，打包单独文件
+                minChunks: 2,
+                filename: "common_[id].js"
             }
-        }
+        },
+        minimize: true,
+        minimizer: [new TerserPlugin()],
+
     },
     module: {
         rules: [
@@ -241,6 +255,12 @@ module.exports = {
                 }
             ]
         }),
-        new reactRefresh()
+        new reactRefresh(),
+        new CssMinizer(),
+        new PurgeCssPlugin({
+            // 找到所有文件匹配,不是文件夹
+            //找到css那些需要，那些不需要
+            paths: glob.sync(`${resolveApp("./src")}/**/*`, { nodir: true })
+        })
     ]
 }; 
