@@ -6,6 +6,7 @@ const reactRefresh = require("@pmmmwh/react-refresh-webpack-plugin")
 const TerserPlugin = require("terser-webpack-plugin")
 const CssMinizer = require("css-minimizer-webpack-plugin")
 const PurgeCssPlugin = require("purgecss-webpack-plugin")
+const CompressPlugin = require("compression-webpack-plugin")
 //找到当前根目录，进行拼接
 const resolveApp = require("./paths")
 const glob = require("glob")
@@ -239,7 +240,9 @@ module.exports = {
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             title: "webpack-5",
-            template: "./public/index.html"
+            template: "./public/index.html",
+            //文件没有发生变化，使用之前的缓存
+            cache: true
         }),
         new CopyWebpackPlugin({
             patterns: [
@@ -261,6 +264,15 @@ module.exports = {
             // 找到所有文件匹配,不是文件夹
             //找到css那些需要，那些不需要
             paths: glob.sync(`${resolveApp("./src")}/**/*`, { nodir: true })
-        })
+        }),
+        new CompressPlugin(
+            {
+                threshold: 0,
+                test: /\.css|js/i,
+                // 最小的比例
+                minRatio: 0.8,
+                algorithmL: "gzip"
+            }
+        )
     ]
 }; 
